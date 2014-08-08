@@ -1,0 +1,17 @@
+PODS:
+  - Expecta (0.3.1)
+  - Montserrat (1.0.0)
+
+DEPENDENCIES:
+  - Expecta
+  - Montserrat (from `../`)
+
+EXTERNAL SOURCES:
+  Montserrat:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
+  Montserrat: f5d19b9add24ad5dace1bf1c60b333bafd16bd5d
+
+COCOAPODS: 0.33.1

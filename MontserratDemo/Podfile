@@ -1,0 +1,10 @@
+platform :ios, '7.0'
+
+target 'MontserratDemo' do
+  pod 'Montserrat', :path => '../'
+end
+
+target 'MontserratDemoTests' do
+  pod 'Expecta'
+end
+
