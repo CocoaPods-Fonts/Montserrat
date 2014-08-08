@@ -1,5 +1,5 @@
-OpenSans
-========
+Montserrat
+==========
 
 [![Build Status](https://travis-ci.org/CocoaPods-Fonts/Montserrat.svg?branch=master)](https://travis-ci.org/CocoaPods-Fonts/Montserrat)
 
