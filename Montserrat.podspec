@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   spec.name = 'Montserrat'
   spec.version = '1.0.0'
-  spec.summary = 'A podspec encapsulating Montserrat font for iOS'
+  spec.summary = 'A Pod encapsulating Montserrat font for iOS'
   spec.description = "The old posters and signs in the traditional neighborhood of Buenos Aires called Montserrat inspired me to design a typeface that rescues the beauty of urban typography from the first half of the twentieth century. The goal is to rescue what is in Montserrat and set it free, under a free, libre and open source license, the SIL Open Font License."
   spec.license = { :type => 'OFL', :file => 'OFL.txt' }
   spec.authors = { 'Kyle Fuller' => 'inbox@kylefuller.co.uk' }
