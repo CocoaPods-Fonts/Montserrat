@@ -46,7 +46,7 @@
         [KOSFontLoader loadFontWithName:fontFileName];
     });
 
-        return [self fontWithName:fontName size:fontSize];
+    return [self fontWithName:fontName size:fontSize];
 }
 
 + (instancetype)montserratFontOfSize:(CGFloat)fontSize {
