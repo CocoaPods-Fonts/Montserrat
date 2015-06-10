@@ -20,20 +20,20 @@
     NSBundle *bundle = [NSBundle bundleWithURL:bundleURL];
     NSURL *fontURL = [bundle URLForResource:fontName withExtension:@"ttf"];
     NSData *fontData = [NSData dataWithContentsOfURL:fontURL];
-    
+
     CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)fontData);
     CGFontRef font = CGFontCreateWithDataProvider(provider);
-    
+
     if (font) {
         CFErrorRef error = NULL;
         if (CTFontManagerRegisterGraphicsFont(font, &error) == NO) {
             CFStringRef errorDescription = CFErrorCopyDescription(error);
             @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:(__bridge NSString *)errorDescription userInfo:@{ NSUnderlyingErrorKey: (__bridge NSError *)error }];
         }
-        
+
         CFRelease(font);
     }
-    
+
     CFRelease(provider);
 }
 
@@ -41,22 +41,22 @@
 
 @implementation UIFont (Montserrat)
 
-+ (instancetype)loadAndReturnFont:(NSString *)fontName size:(CGFloat)fontSize onceToken:(dispatch_once_t *)onceToken fontFileName:(NSString *)fontFileName {
++ (instancetype)montserratLoadAndReturnFont:(NSString *)fontName size:(CGFloat)fontSize onceToken:(dispatch_once_t *)onceToken fontFileName:(NSString *)fontFileName {
     dispatch_once(onceToken, ^{
         [KOSFontLoader loadFontWithName:fontFileName];
     });
-    
-    return [self fontWithName:fontName size:fontSize];
+
+        return [self fontWithName:fontName size:fontSize];
 }
 
 + (instancetype)montserratFontOfSize:(CGFloat)fontSize {
     static dispatch_once_t onceToken;
-    return [self loadAndReturnFont:@"Montserrat" size:fontSize onceToken:&onceToken fontFileName:@"Montserrat-Regular"];
+    return [self montserratLoadAndReturnFont:@"Montserrat" size:fontSize onceToken:&onceToken fontFileName:@"Montserrat-Regular"];
 }
 
 + (instancetype)montserratBoldFontOfSize:(CGFloat)fontSize {
     static dispatch_once_t onceToken;
-    return [self loadAndReturnFont:@"Montserrat-Bold" size:fontSize onceToken:&onceToken fontFileName:@"Montserrat-Bold"];
+    return [self montserratLoadAndReturnFont:@"Montserrat-Bold" size:fontSize onceToken:&onceToken fontFileName:@"Montserrat-Bold"];
 }
 
 @end
