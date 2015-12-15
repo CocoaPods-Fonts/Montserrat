@@ -7,11 +7,16 @@
 #import <CoreText/CoreText.h>
 #import "UIFont+Montserrat.h"
 
+@interface KOSFontLoader : NSObject
 
-@implementation UIFont (OpenSans)
++ (void)loadFontWithName:(NSString *)fontName;
 
-void MontserratLoadFontWithName(NSString *fontName) {
-    NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"Montserrat" withExtension:@"bundle"];
+@end
+
+@implementation KOSFontLoader
+
++(void) loadFontWithName:(NSString *)fontName {
+    NSURL *bundleURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"Montserrat" withExtension:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithURL:bundleURL];
     NSURL *fontURL = [bundle URLForResource:fontName withExtension:@"ttf"];
     NSData *fontData = [NSData dataWithContentsOfURL:fontURL];
@@ -32,9 +37,13 @@ void MontserratLoadFontWithName(NSString *fontName) {
     CFRelease(provider);
 }
 
+@end
+
+@implementation UIFont (Montserrat)
+
 + (instancetype)montserratLoadAndReturnFont:(NSString *)fontName size:(CGFloat)fontSize onceToken:(dispatch_once_t *)onceToken fontFileName:(NSString *)fontFileName {
     dispatch_once(onceToken, ^{
-        MontserratLoadFontWithName(fontFileName);
+        [KOSFontLoader loadFontWithName:fontFileName];
     });
 
     return [self fontWithName:fontName size:fontSize];
